@@ -42,7 +42,6 @@
 // export default Login;
 
 
-// Login.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig"; // Import Firebase Auth
@@ -54,13 +53,16 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, userType) => {
     e.preventDefault();
     setError(""); // Clear previous errors
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      alert("Login successful!");
-      navigate("/survey");
+      if (userType === "homestayOwner") {
+        navigate("/templates"); // Navigate to homestay owner's dashboard
+      } else if (userType === "user") {
+        navigate("/feedback"); // Navigate to user's dashboard
+      }
     } catch (err) {
       setError(err.message); // Display Firebase error
     }
@@ -69,7 +71,6 @@ const Login = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <form
-        onSubmit={handleSubmit}
         className="bg-white p-8 shadow-md rounded w-1/3"
       >
         <h2 className="text-2xl font-bold mb-6">Login</h2>
@@ -91,10 +92,16 @@ const Login = () => {
           required
         />
         <button
-          type="submit"
-          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded w-full"
+          onClick={(e) => handleSubmit(e, "homestayOwner")}
+          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded w-full mb-4"
         >
-          Login
+          Login as homestay owner
+        </button>
+        <button
+          onClick={(e) => handleSubmit(e, "user")}
+          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded w-full"
+        >
+          Login as user
         </button>
       </form>
     </div>
