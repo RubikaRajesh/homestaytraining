@@ -1,32 +1,46 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Templates from "./components/Templates";
+
+// Import Components
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 import Modules from "./components/Modules";
 import Feedback from "./components/Feedback";
 import Survey from "./components/Survey";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import Login from "./components/Login"
+import Login from "./components/Login";
 import Register from "./components/Register";
+import LocalExpertsHub from "./components/LocalExpertsHub";
+import SignUpExpert from "./components/SignUpExpert";
+import ProfilesPage from "./components/ProfilesPage"; // Profiles Page for experts
 
 const App = () => {
   return (
     <Router>
+      {/* Navbar is persistent across all routes */}
       <Navbar />
       <Routes>
+        {/* Home Page */}
         <Route path="/" element={<Home />} />
-        <Route path="/templates" element={<Templates />} />
+        
+        {/* Other Pages */}
         <Route path="/modules" element={<Modules />} />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/survey" element={<Survey />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register/>} />
+        <Route path="/register" element={<Register />} />
+        
+        {/* Local Experts Hub */}
+        <Route path="/local-experts-hub" element={<LocalExpertsHub />} />
+        <Route path="/signup-expert" element={<SignUpExpert />} />
+        <Route path="/profiles/:category" element={<ProfilesPage />} /> {/* Dynamic Profiles Page */}
       </Routes>
     </Router>
   );
 };
 
 export default App;
+
+
 
 // export default App;
 // import React from "react";
