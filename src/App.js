@@ -12,6 +12,7 @@ import Register from "./components/Register";
 import LocalExpertsHub from "./components/LocalExpertsHub";
 import SignUpExpert from "./components/SignUpExpert";
 import ProfilesPage from "./components/ProfilesPage"; // Profiles Page for experts
+import EnterCode from "./components/EnterCode"; // Code validation component
 
 const App = () => {
   return (
@@ -24,7 +25,6 @@ const App = () => {
         
         {/* Other Pages */}
         <Route path="/modules" element={<Modules />} />
-        <Route path="/feedback" element={<Feedback />} />
         <Route path="/survey" element={<Survey />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -32,13 +32,20 @@ const App = () => {
         {/* Local Experts Hub */}
         <Route path="/local-experts-hub" element={<LocalExpertsHub />} />
         <Route path="/signup-expert" element={<SignUpExpert />} />
-        <Route path="/profiles/:category" element={<ProfilesPage />} /> {/* Dynamic Profiles Page */}
+        
+        {/* Profiles Page for experts */}
+        <Route path="/profiles/:category" element={<ProfilesPage />} /> 
+        
+        {/* Feedback Page after code validation */}
+        <Route path="/enter-code" element={<EnterCode />} /> {/* Code input page */}
+        <Route path="/feedback" element={<Feedback />} /> {/* Feedback form page */}
       </Routes>
     </Router>
   );
 };
 
 export default App;
+
 
 
 
