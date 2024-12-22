@@ -26,17 +26,6 @@ The system comprises of 2 main entities:
 
 ---
 
-## Getting Started
-
-Clone the repository using the command:
-```sh
-git clone https://github.com/Sahil181045/Certificate-Validation-System.git
-```
-You can run the project either through:
-- [Local Setup](#local-setup)
-- [Using Docker](#using-docker) (Recommended)
-
----
 
 ## Local Setup
 
